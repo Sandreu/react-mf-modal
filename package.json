@@ -1,0 +1,23 @@
+{
+  "name": "react-mf-modal",
+  "version": "0.1.0",
+  "description": "A markup free modal component for React",
+  "main": "index.js",
+  "repository": "",
+  "author": "Sandreu <deadyman@free.fr",
+  "peerDependencies": {
+    "react": "^0.14.0"
+  },
+  "tags": [
+    "react",
+    "modal"
+  ],
+  "keywords": [
+    "react",
+    "react-component",
+    "react-mf",
+    "react-modal",
+    "modal",
+    "side-nav",
+  ]
+}
