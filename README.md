@@ -15,6 +15,7 @@ Available on npm
 ## Usage
 
 This component provides a service instance to get a `Promise` of the modal result.
+
 You can use any component as Modal.
 
 ```javascript
@@ -26,7 +27,9 @@ class YourModal extends React.Component {
   }
   
   render() {
-    return <div className="modal" onClick={this.handleSuccess}>{this.props.message}</div>;
+    return (<div className="modal" onClick={this.handleSuccess}>
+      {this.props.message}
+    </div>);
   }
 }
 
@@ -56,7 +59,8 @@ class YourComponent extends React.Component {
       <div>
         Your components here
       </div>
-      // A DOM node with the Backdrop and the modal will be put here when a ModalService.open is called
+      // A DOM node with the Backdrop and the modal will be put here when
+      // a ModalService.open is called
     </ModalContainer>)
   }
   // ...
