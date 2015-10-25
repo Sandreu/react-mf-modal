@@ -9,7 +9,9 @@ This React Component aims to extract the markup from the modal logic.
 
 Available on npm
 
-`npm install --save react-mf-modal`
+```
+npm install --save react-mf-modal
+```
 
 
 ## Usage
