@@ -1,4 +1,4 @@
-# React Markup Free Modal
+# React Markupfree Modal
 
 This React Component aims to extract the markup from the modal logic.
 
