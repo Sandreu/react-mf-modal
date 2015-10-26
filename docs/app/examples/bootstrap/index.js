@@ -1,12 +1,12 @@
 import React from 'react';
-import Hello from './hello'
+import SimpleModalExample from '../commons/simple-modal-example'
 import ModalService from 'react-mf-modal';
 import ModalContainer from 'react-mf-modal/container';
-import { Backdrop } from 'react-mf-modal/themes/bootstrap'
+import { Backdrop, SimpleModal } from 'react-mf-modal/themes/bootstrap'
 
 export default class Examples extends React.Component {
   handleSimple = () => {
-    ModalService.open(Hello)
+    ModalService.open(SimpleModalExample, {SimpleModal})
       .then(console.log.bind(console))
       .catch(console.warn.bind(console))
   }

@@ -5,9 +5,10 @@ var ghPages = require('gulp-gh-pages');
 var express = require('express');
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
-var devConfig = require('../webpack.config.dev.js');
+var devConfig = require('../webpack.config.dev');
+var prodConfig = require('../webpack.config.prod');
 
-gulp.task('serve-docs', function (cb) {
+gulp.task('docs:dev', function (cb) {
   var compiler = webpack(devConfig);
   
   var app = new webpackDevServer(compiler, {
@@ -24,4 +25,13 @@ gulp.task('serve-docs', function (cb) {
     
     gutil.log('[webpack-dev-server', 'Serving localhost:8080');
   });
+});
+
+gulp.task('docs:prod', function (cb) {
+  webpack(prodConfig, cb);
 })
+
+gulp.task('docs:deploy', ['docs:prod'], function () {
+    return gulp.src(['./docs/**/*', '!./docs/app'])
+      .pipe(ghPages());
+});

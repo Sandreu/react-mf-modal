@@ -1,7 +1,10 @@
 import React from 'react'
-import { SimpleModal } from 'react-mf-modal/themes/bootstrap';
 
-export default class HelloModal extends React.Component {
+export default class SimpleModalExample extends React.Component {
+  static propTypes = {
+    SimpleModal: React.PropTypes.func.isRequired,
+  }
+  
   handleSuccess = () => {
     this.props.resolve('OK !');
   }
@@ -11,7 +14,7 @@ export default class HelloModal extends React.Component {
   }
   
   render() {
-    return <SimpleModal title="Modal title" {...this.props}>
+    return <this.props.SimpleModal title="Modal title" {...this.props}>
       <div className="modal-body">
         Hello World
       </div>
@@ -19,6 +22,6 @@ export default class HelloModal extends React.Component {
         <button type="button" className="btn btn-default" onClick={this.handleClose}>Close</button>
         <button type="button" className="btn btn-primary" onClick={this.handleSuccess}>Success</button>
       </div>
-    </SimpleModal>
+    </this.props.SimpleModal>
   }
 }
