@@ -37,12 +37,17 @@ class YourModal extends React.Component {
 
 class YourComponent extends React.Component {
   // ...
+  handleModalSuccess = (result) => {
+    console.log(result) // Will log 'Great'
+  }
+  
+  handleModalDismiss = (dismiss) => {
+    // You can handle here dismiss cases
+  }
+  
   handleClick() {
-    ModalService.open(YourModal, {message: 'Hello World !'}).then((result) => {
-      console.log(result) // Will log 'Great'
-    }).catch((dismiss) => {
-      // You can handle here dismiss cases
-    });
+    ModalService.open(YourModal, {message: 'Hello World !'})
+      .then(this.handleModalSuccess, this.handleModalDismiss)
   }
   // ...
 }
