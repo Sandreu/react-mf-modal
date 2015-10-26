@@ -15,7 +15,7 @@ module.exports = [
       optional: ['runtime'],
       resolveModuleSource: function (source, filename) {
         if (source.match(/^react-mf-modal/)) {
-          source = path.relative(path.dirname(filename), __dirname + '/src/' + source);
+          source = path.relative(path.dirname(filename), source.replace('react-mf-modal',  __dirname + '/src/'));
         }
           
         return source;

@@ -3,7 +3,7 @@ import modalService from './index'
 
 class DefaultBackdrop extends React.Component {
   render() {
-    return <div className="backdrop" {...this.props}></div>
+    return <div className="modal-backdrop" {...this.props}></div>
   }
 }
 

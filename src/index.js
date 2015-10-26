@@ -9,13 +9,13 @@ class ModalService {
     
     if (containers[name]) throw new Error(`Container ${name} already exists`);
     
-    container[name] = container;
+    containers[name] = container;
   }
   
   unregisterContainer (name) {
     if (!containers[name]) throw new Error(`Container ${name} doesn\'t exist`);
     
-    delete container[name];
+    delete containers[name];
   }
   
   open (Handler, props, container = 'default') {
