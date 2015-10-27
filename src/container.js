@@ -10,6 +10,7 @@ class DefaultBackdrop extends React.Component {
 export default class ModalContainer extends React.Component {
   static defaultProps = {
     backdropComponent: DefaultBackdrop,
+    name: "default",
   }
   
   state ={
@@ -19,11 +20,11 @@ export default class ModalContainer extends React.Component {
   }
   
   componentWillMount() {
-    modalService.registerContainer(this)
+    modalService.registerContainer(this.props.name, this)
   }
   
   componentWillUnmount () {
-    modalService.unregisterContainer(this)
+    modalService.unregisterContainer(this.props.name)
   }
   
   openModal = (Handler, props) => {
