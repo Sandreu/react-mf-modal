@@ -19679,7 +19679,7 @@
 	            { style: styles.links },
 	            _react2['default'].createElement(
 	              'a',
-	              { href: '/', style: styles.link },
+	              { href: 'index.html', style: styles.link },
 	              'Getting started'
 	            ),
 	            _react2['default'].createElement(

@@ -7,7 +7,7 @@ export default class App extends React.Component {
       <div style={styles.menuStyle}>
         <h1 style={styles.logo}>react-mf-modal</h1>
         <div style={styles.links}>
-          <a href="/" style={styles.link}>Getting started</a>
+          <a href="index.html" style={styles.link}>Getting started</a>
           <a href="bootstrap.html" style={styles.link}>Bootstrap</a>
           <a href="materialize.html" style={styles.link}>Materialize</a>
         </div>
