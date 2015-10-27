@@ -30,7 +30,7 @@ export default class SimpleBootstrapModal extends React.Component {
               <span aria-hidden="true">&times;</span>
               <span className="sr-only">Close</span>
             </button>
-            <h6 className="modal-title">{this.props.title}</h6>
+            <h3 className="modal-title">{this.props.title}</h3>
           </div>
           <div className="modal-body">
             {this.props.children}

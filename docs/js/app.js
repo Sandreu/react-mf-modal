@@ -19679,7 +19679,7 @@
 	            { style: styles.links },
 	            _react2['default'].createElement(
 	              'a',
-	              { href: '/', style: styles.link },
+	              { href: 'index.html', style: styles.link },
 	              'Getting started'
 	            ),
 	            _react2['default'].createElement(
@@ -21688,7 +21688,7 @@
 	                )
 	              ),
 	              _react2['default'].createElement(
-	                'h6',
+	                'h3',
 	                { className: 'modal-title' },
 	                this.props.title
 	              )
