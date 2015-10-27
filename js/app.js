@@ -21688,7 +21688,7 @@
 	                )
 	              ),
 	              _react2['default'].createElement(
-	                'h6',
+	                'h3',
 	                { className: 'modal-title' },
 	                this.props.title
 	              )
