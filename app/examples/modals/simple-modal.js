@@ -9,10 +9,6 @@ export default class SimpleModalExample extends React.Component {
     this.props.resolve('OK !');
   }
   
-  handleClose = () => {
-    this.props.dismiss('closed');
-  }
-  
   render() {
     return <this.props.SimpleModal title="Modal title" onSubmitClick={this.handleSuccess} {...this.props}>
       Hello World
