@@ -1,5 +1,6 @@
 import React from 'react';
 import Examples from './examples';
+import gettingStarted from './statics/getting-started.md';
 
 export default class App extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class App extends React.Component {
         </div>
       </div>
       <div style={styles.content}>
-        { window.theme ? <Examples /> : null }
+        { window.theme ? <Examples /> : <div dangerouslySetInnerHTML={{__html:gettingStarted}} />  }
       </div>
     </div>);
   }
@@ -45,6 +46,7 @@ const styles = {
   },
   content: {
     padding:20,
-    margin: 0,
+    margin: '0 auto',
+    maxWidth: 750,
   }
 }

@@ -1,4 +1,5 @@
 var path = require('path');
+var highlightjs = require('highlight.js');
 
 module.exports = [
   {
@@ -19,12 +20,22 @@ module.exports = [
         return source;
       },
     },
+    markdownLoader: {
+      langPrefix: 'hljs ',
+      highlight: function (code) {
+        return highlightjs.highlightAuto(code).value;
+      },
+    },
     module: {
       loaders: [
         {
           test: /\.js$/,
           exclude: /node_modules/,
           loader: 'babel',
+        },
+        {
+          test: /\.md$/,
+          loader: "html!markdown",
         },
       ]
     },

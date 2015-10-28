@@ -1,34 +1,15 @@
-var path = require('path');
+var base = require('./webpack.config.prod.js');
+var extend = require('extend');
 
 module.exports = [
-  {
+  extend({}, base[0], {
     name: "dev",
     devtool: 'source-map',
-    entry: './docs/app/index.js',
+    entry: ['./docs/app/index.js', 'webpack-dev-server/client?/'],
     output: {
       path: '/js/',
       filename: 'app.js',
       publicPath: '/js/',
     },
-    babel: {
-      stage:0,
-      optional: ['runtime'],
-      resolveModuleSource: function (source, filename) {
-        if (source.match(/^react-mf-modal/)) {
-          source = path.relative(path.dirname(filename), source.replace('react-mf-modal',  __dirname + '/src'));
-        }
-          
-        return source;
-      },
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel',
-        },
-      ]
-    },
-  }
+  }),
 ];

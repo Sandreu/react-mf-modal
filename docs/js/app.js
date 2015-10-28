@@ -19651,6 +19651,10 @@
 
 	var _examples2 = _interopRequireDefault(_examples);
 
+	var _staticsGettingStartedMd = __webpack_require__(247);
+
+	var _staticsGettingStartedMd2 = _interopRequireDefault(_staticsGettingStartedMd);
+
 	var App = (function (_React$Component) {
 	  _inherits(App, _React$Component);
 
@@ -19697,7 +19701,7 @@
 	        _react2['default'].createElement(
 	          'div',
 	          { style: styles.content },
-	          window.theme ? _react2['default'].createElement(_examples2['default'], null) : null
+	          window.theme ? _react2['default'].createElement(_examples2['default'], null) : _react2['default'].createElement('div', { dangerouslySetInnerHTML: { __html: _staticsGettingStartedMd2['default'] } })
 	        )
 	      );
 	    }
@@ -19734,7 +19738,8 @@
 	  },
 	  content: {
 	    padding: 20,
-	    margin: 0
+	    margin: '0 auto',
+	    maxWidth: 750
 	  }
 	};
 	module.exports = exports['default'];
@@ -21969,10 +21974,6 @@
 	    this.handleSuccess = function () {
 	      _this.props.resolve('OK !');
 	    };
-
-	    this.handleClose = function () {
-	      _this.props.dismiss('closed');
-	    };
 	  }
 
 	  _createClass(SimpleModalExample, [{
@@ -21997,6 +21998,12 @@
 
 	exports['default'] = SimpleModalExample;
 	module.exports = exports['default'];
+
+/***/ },
+/* 247 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1 id=\"getting-started\">Getting started</h1>\n<h2 id=\"introduction\">Introduction</h2>\n<p>The react-mf components aims to extract the markup from the component logic.\nYou can get it via npm :</p>\n<pre><code class=\"hljs bash\"> npm <span class=\"hljs-operator\"><span class=\"hljs-keyword\">install</span> <span class=\"hljs-comment\">--save react-mf-modal</span></span>\n</code></pre>\n<h2 id=\"themes\">Themes</h2>\n<p>Themes are not meant to be able to handle every corner options of parent libraries.\nThey&#39;re built to handle common use cases, and to be easily switched from one to another.\nThey&#39;re built to allow you to mock your app easily without taking care about common cases.\nBuild your own markup, it can be easily made once all your business code is running, without changing your codebase.</p>\n<h2 id=\"architecture\">Architecture</h2>\n<p>react-mf-modal provides :</p>\n<ul>\n<li>a service,</li>\n<li>a named modal container component automaticaly registering to the service,</li>\n<li>themed set of famous CSS libraries to easily and quickly mock your ideas.</li>\n</ul>\n<h3 id=\"the-service\">The service</h3>\n<p>Usage of modal is easy : </p>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> <span class=\"hljs-type\">React</span> from <span class=\"hljs-symbol\">'reac</span>t';\n<span class=\"hljs-keyword\">import</span> <span class=\"hljs-type\">ModalService</span> from <span class=\"hljs-symbol\">'react</span>-mf-modal';\n<span class=\"hljs-keyword\">import</span> <span class=\"hljs-type\">YourModalComponent</span> from '...';\n\nexport <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">YourComponent</span> <span class=\"hljs-keyword\"><span class=\"hljs-keyword\">extends</span></span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> {</span>\n  handleModalSuccess = (result) =&gt; {\n    <span class=\"hljs-comment\">// Handle modal result here</span>\n  }\n\n  handleModalDismiss = (cause) =&gt; {\n    <span class=\"hljs-comment\">// Handle dimiss here</span>\n  }\n\n  thisIsWhereItHappens() {\n    <span class=\"hljs-keyword\">var</span> modalComponentProps = {\n      prop1 : <span class=\"hljs-symbol\">'fo</span>o',\n      prop2 : <span class=\"hljs-symbol\">'ba</span>r',\n    };\n\n    <span class=\"hljs-type\">ModalService</span>.open(<span class=\"hljs-type\">YourModalComponent</span>, modalComponentProps)\n      .then(<span class=\"hljs-keyword\">this</span>.handleModalSuccess, <span class=\"hljs-keyword\">this</span>.handleModalDismiss)\n  }\n}\n</code></pre>\n<h3 id=\"the-modal-container\">The modal container</h3>\n<p>This is where modal will be rendered :</p>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> <span class=\"hljs-type\">React</span> from <span class=\"hljs-symbol\">'reac</span>t'\n<span class=\"hljs-keyword\">import</span> <span class=\"hljs-type\">ModalContainer</span> from <span class=\"hljs-symbol\">'react</span>-mf-modal/container'\n\nexport <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">YourAppComponent</span> <span class=\"hljs-keyword\"><span class=\"hljs-keyword\">extends</span></span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> {</span>\n  render() {\n    <span class=\"hljs-keyword\">return</span> &lt;<span class=\"hljs-type\">ModalContainer</span>&gt;\n      &lt;<span class=\"hljs-type\">YourHeaderComponent</span> /&gt;\n      &lt;<span class=\"hljs-type\">YourBodyComponent</span> /&gt;\n      &lt;<span class=\"hljs-type\">YourFooterComponent</span> /&gt;\n      <span class=\"hljs-comment\">/**\n      * This is where backdrop and modals will be happened :\n      * &lt;Backdrop /&gt;\n      * &lt;Modal /&gt;\n      **/</span>\n    &lt;/<span class=\"hljs-type\">ModalContainer</span>&gt;;\n  }\n}\n</code></pre>\n<h3 id=\"themed-components\">Themed Components</h3>\n<p>Every theme exposes those modals :</p>\n<ul>\n<li>SimpleModal</li>\n</ul>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> <span class=\"hljs-type\">React</span> <span class=\"hljs-keyword\">from</span> 'react'\n<span class=\"hljs-keyword\">import</span> { <span class=\"hljs-type\">SimpleModal</span> } <span class=\"hljs-keyword\">from</span> 'react-mf-modal/themes/materialize';\n\n<span class=\"hljs-keyword\">export</span> default <span class=\"hljs-type\">YourThemedModal</span> extends <span class=\"hljs-type\">React</span>.<span class=\"hljs-type\">Component</span> {\n  <span class=\"hljs-keyword\">static</span> propTypes = {\n    prop1: <span class=\"hljs-type\">React</span>.<span class=\"hljs-type\">PropTypes</span>.<span class=\"hljs-type\">string</span>,\n    prop2: <span class=\"hljs-type\">React</span>.<span class=\"hljs-type\">PropTypes</span>.<span class=\"hljs-type\">string</span>,\n    resolve: <span class=\"hljs-type\">React</span>.<span class=\"hljs-type\">PropTypes</span>.func.isRequired,\n    dismiss: <span class=\"hljs-type\">React</span>.<span class=\"hljs-type\">PropTypes</span>.func.isRequired,\n  }\n\n  handleSuccess = () =&gt; {\n    this.props.resolve('<span class=\"hljs-type\">Your</span> <span class=\"hljs-literal\">result</span>');\n  }\n\n  render() {\n    <span class=\"hljs-keyword\">return</span> &lt;<span class=\"hljs-type\">SimpleModal</span> \n        title=<span class=\"hljs-string\">\"Modal title\"</span>\n        onSubmitClick={this.handleSuccess}\n        <span class=\"hljs-decorator\">{...this.props}&gt;\n      Hello World\n    &lt;/SimpleModal&gt;\n  }\n}</span>\n</code></pre>\n";
 
 /***/ }
 /******/ ]);
