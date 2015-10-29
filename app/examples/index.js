@@ -3,10 +3,11 @@ import React from 'react';
 import ModalService from 'react-mf-modal';
 import ModalContainer from 'react-mf-modal/container';
 
-import allThemes from './all-themes';
 import SimpleModalExample from './modals/simple-modal';
+import SimpleModalExampleCode from '!./code-loader!./modals/simple-modal';
 
-const theme = allThemes[window.theme];
+import examplesIntro from '../statics/examples-intro.md';
+
 const btnsClassNames = {
   'bootstrap' : 'btn btn-primary',
   'materialize' : 'waves-effect waves-light btn',
@@ -14,7 +15,7 @@ const btnsClassNames = {
 
 export default class Examples extends React.Component {
   handleSimple = () => {
-    ModalService.open(SimpleModalExample, theme) // give theme as props to handle the right source
+    ModalService.open(SimpleModalExample)
       .then(console.log.bind(console))
       .catch(console.warn.bind(console))
   }
@@ -22,7 +23,9 @@ export default class Examples extends React.Component {
   render() {
     
     return (<ModalContainer backdropComponent={theme.Backdrop}>
+      <div dangerouslySetInnerHTML={{__html:examplesIntro}} />
       <button className={btnsClassNames[window.theme]} onClick={this.handleSimple}>Simple modal</button>
+      <div dangerouslySetInnerHTML={{__html:SimpleModalExampleCode}} />
     </ModalContainer>)
   }
 }
