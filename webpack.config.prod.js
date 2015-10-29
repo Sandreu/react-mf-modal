@@ -22,8 +22,8 @@ module.exports = [
     },
     markdownLoader: {
       langPrefix: 'hljs ',
-      highlight: function (code) {
-        return highlightjs.highlightAuto(code).value;
+      highlight: function (code, lang) {
+        return highlightjs.highlightAuto(code, [lang]).value;
       },
     },
     module: {
@@ -32,8 +32,7 @@ module.exports = [
           test: /\.js$/,
           exclude: /node_modules/,
           loader: 'babel',
-        },
-        {
+        }, {
           test: /\.md$/,
           loader: "html!markdown",
         },

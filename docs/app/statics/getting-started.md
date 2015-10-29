@@ -9,13 +9,6 @@ You can get it via npm :
  npm install --save react-mf-modal
  ```
 
-## Themes
-
-Themes are not meant to be able to handle every corner options of parent libraries.
-They're built to handle common use cases, and to be easily switched from one to another.
-They're built to allow you to mock your app easily without taking care about common cases.
-Build your own markup, it can be easily made once all your business code is running, without changing your codebase.
-
 ## Architecture
 
 react-mf-modal provides :
@@ -58,8 +51,8 @@ export default class YourComponent extends React.Component {
 This is where modal will be rendered :
 
 ```javascript
-import React from 'react'
-import ModalContainer from 'react-mf-modal/container'
+import React from 'react';
+import ModalContainer from 'react-mf-modal/container';
 
 export default class YourAppComponent extends React.Component {
   render() {
@@ -68,7 +61,7 @@ export default class YourAppComponent extends React.Component {
       <YourBodyComponent />
       <YourFooterComponent />
       /**
-      * This is where backdrop and modals will be happened :
+      * This is where backdrop and modals will be appened :
       * <Backdrop />
       * <Modal />
       **/
@@ -80,7 +73,7 @@ export default class YourAppComponent extends React.Component {
 
 ### Themed Components
 
-Every theme exposes those modals :
+Every theme exposes those modal components:
 
 * SimpleModal
 
@@ -104,9 +97,17 @@ export default YourThemedModal extends React.Component {
     return <SimpleModal 
         title="Modal title"
         onSubmitClick={this.handleSuccess}
-        {...this.props}>
+        resolve={this.props.resolve}
+        dismiss={this.props.dismiss}>
       Hello World
-    </SimpleModal>
+    </SimpleModal>;
   }
 }
 ```
+
+## Themes
+
+Themes are not meant to be able to handle every corner options of parent libraries.
+They're built to handle common use cases, and to be easily switched from one to another.
+They're built to allow you to mock your app easily without taking care about common cases.
+Build your own markup, it can be easily added once all your business code is running, without changing your codebase.
