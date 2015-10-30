@@ -2,8 +2,10 @@ import React from 'react';
 
 import ModalService from 'react-mf-modal';
 import ModalContainer from 'react-mf-modal/container';
+import APIComponent from './api';
 
 import SimpleModalExample from '!babel!./demo-loader.js!./modals/simple-modal';
+import SimpleModalAPI from '!./docgen-loader!../../../src/themes/bootstrap/simple-modal';
 import SimpleModalExampleCode from '!./code-loader!./modals/simple-modal';
 
 import examplesIntro from '../statics/examples-intro.md';
@@ -27,8 +29,10 @@ export default class Examples extends React.Component {
     
     return (<ModalContainer backdropComponent={theme.Backdrop}>
       <div dangerouslySetInnerHTML={{__html:examplesIntro}} />
+      <h3>SimpleModal</h3>
       <button className={btnsClassNames[window.theme]} onClick={this.handleSimple}>Simple modal</button>
       <div dangerouslySetInnerHTML={{__html:SimpleModalExampleCode.replace(/{{\s*theme\s*}}/mg, window.theme)}} />
+      <APIComponent docgen={SimpleModalAPI} />
     </ModalContainer>)
   }
 }

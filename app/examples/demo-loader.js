@@ -1,5 +1,3 @@
-var highlightjs = require('highlight.js');
-
 module.exports = function (input) {
   var code = input.replace(/\/\* example((.|[\n])*?)\*\/\n/g, '');
   code = code.replace(/\/\* real\n((.|[\n])*?)\*\/\n/g, function (match, code) {
