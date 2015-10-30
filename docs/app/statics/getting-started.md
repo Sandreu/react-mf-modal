@@ -3,6 +3,8 @@
 ## Introduction
 
 The react-mf components aims to extract the markup from the component logic.
+It can handle dialog or side nav, animations, custom html markup, and already deals with some famous css frameworks.
+
 You can get it via npm :
 
  ```bash
