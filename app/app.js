@@ -11,6 +11,9 @@ export default class App extends React.Component {
           <a href="index.html" style={styles.link}>Getting started</a>
           <a href="bootstrap.html" style={styles.link}>Bootstrap</a>
           <a href="materialize.html" style={styles.link}>Materialize</a>
+          <a href="https://github.com/Sandreu/react-mf-modal" style={styles.link}>
+            <img src="assets/gh.png" alt="Github Logo" style={styles.logoGH} />
+          </a>
         </div>
       </div>
       <div style={styles.content}>
@@ -36,13 +39,17 @@ const styles = {
   links: {
     float: 'right',
     fontSize: 15,
-    lineHeight: '60px',
   },
   link: {
+    lineHeight: '60px',
+    display: 'inline-block',
     color: '#fff',
     textDecoration: 'none',
     padding: '0 20px',
     margin:0,
+  },
+  logoGH: {
+    verticalAlign: 'middle',
   },
   content: {
     padding:20,
