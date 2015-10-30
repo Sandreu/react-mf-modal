@@ -1,12 +1,31 @@
 import React from 'react'
 
+/**
+ * SimpleModal is the basic dialog window with a primary and a cancel button.
+ */
+ 
 export default class SimpleBootstrapModal extends React.Component {
   static propTypes = {
+    /**
+     * Title of the modal dialog
+     */
     title: React.PropTypes.string.isRequired,
-    dismiss: React.PropTypes.func.isRequired,
-    resolve: React.PropTypes.func.isRequired,
+    /**
+     * Label for the submit button
+     */
     submitLabel: React.PropTypes.string.isRequired,
+    /**
+     * Submit button handler function
+     */
     onSubmitClick: React.PropTypes.func.isRequired,
+    /**
+     * You HAVE TO pass dismiss function injected by the service
+     */
+    dismiss: React.PropTypes.func.isRequired,
+    /**
+     * You HAVE TO pass resolve function injected by the service
+     */
+    resolve: React.PropTypes.func.isRequired,
   }
   
   static defaultProps = {

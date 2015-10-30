@@ -25,4 +25,4 @@ export default class YourAppComponent extends React.Component {
 
 So here is all suported themed modal components
 
-### Modals
+## Modals

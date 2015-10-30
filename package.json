@@ -40,6 +40,7 @@
     "html-loader": "^0.3.0",
     "markdown-loader": "^0.1.7",
     "react": "^0.14.0",
+    "react-docgen": "^2.3.1",
     "react-dom": "^0.14.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",

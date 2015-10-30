@@ -19651,7 +19651,7 @@
 
 	var _examples2 = _interopRequireDefault(_examples);
 
-	var _staticsGettingStartedMd = __webpack_require__(242);
+	var _staticsGettingStartedMd = __webpack_require__(254);
 
 	var _staticsGettingStartedMd2 = _interopRequireDefault(_staticsGettingStartedMd);
 
@@ -19695,6 +19695,11 @@
 	              'a',
 	              { href: 'materialize.html', style: styles.link },
 	              'Materialize'
+	            ),
+	            _react2['default'].createElement(
+	              'a',
+	              { href: 'https://github.com/Sandreu/react-mf-modal', style: styles.link },
+	              _react2['default'].createElement('img', { src: 'assets/gh.png', alt: 'Github Logo', style: styles.logoGH })
 	            )
 	          )
 	        ),
@@ -19727,14 +19732,18 @@
 	  },
 	  links: {
 	    float: 'right',
-	    fontSize: 15,
-	    lineHeight: '60px'
+	    fontSize: 15
 	  },
 	  link: {
+	    lineHeight: '60px',
+	    display: 'inline-block',
 	    color: '#fff',
 	    textDecoration: 'none',
 	    padding: '0 20px',
 	    margin: 0
+	  },
+	  logoGH: {
+	    verticalAlign: 'middle'
 	  },
 	  content: {
 	    padding: 20,
@@ -20211,18 +20220,31 @@
 
 	var _srcContainer2 = _interopRequireDefault(_srcContainer);
 
-	var _modalsSimpleModal = __webpack_require__(239);
+	var _api = __webpack_require__(239);
 
-	var _modalsSimpleModal2 = _interopRequireDefault(_modalsSimpleModal);
+	var _api2 = _interopRequireDefault(_api);
 
-	var _codeLoaderModalsSimpleModal = __webpack_require__(240);
+	var _babelDemoLoaderJsModalsSimpleModal = __webpack_require__(243);
+
+	var _babelDemoLoaderJsModalsSimpleModal2 = _interopRequireDefault(_babelDemoLoaderJsModalsSimpleModal);
+
+	var _docgenLoaderSrcThemesBootstrapSimpleModal = __webpack_require__(251);
+
+	var _docgenLoaderSrcThemesBootstrapSimpleModal2 = _interopRequireDefault(_docgenLoaderSrcThemesBootstrapSimpleModal);
+
+	var _codeLoaderModalsSimpleModal = __webpack_require__(252);
 
 	var _codeLoaderModalsSimpleModal2 = _interopRequireDefault(_codeLoaderModalsSimpleModal);
 
-	var _staticsExamplesIntroMd = __webpack_require__(241);
+	var _staticsExamplesIntroMd = __webpack_require__(253);
 
 	var _staticsExamplesIntroMd2 = _interopRequireDefault(_staticsExamplesIntroMd);
 
+	var _allThemes = __webpack_require__(244);
+
+	var _allThemes2 = _interopRequireDefault(_allThemes);
+
+	var theme = _allThemes2['default'][window.theme];
 	var btnsClassNames = {
 	  'bootstrap': 'btn btn-primary',
 	  'materialize': 'waves-effect waves-light btn'
@@ -20237,7 +20259,7 @@
 	    _get(Object.getPrototypeOf(Examples.prototype), 'constructor', this).apply(this, arguments);
 
 	    this.handleSimple = function () {
-	      _src2['default'].open(_modalsSimpleModal2['default']).then(console.log.bind(console))['catch'](console.warn.bind(console));
+	      _src2['default'].open(_babelDemoLoaderJsModalsSimpleModal2['default']).then(console.log.bind(console))['catch'](console.warn.bind(console));
 	    };
 	  }
 
@@ -20250,11 +20272,17 @@
 	        { backdropComponent: theme.Backdrop },
 	        _react2['default'].createElement('div', { dangerouslySetInnerHTML: { __html: _staticsExamplesIntroMd2['default'] } }),
 	        _react2['default'].createElement(
+	          'h3',
+	          null,
+	          'SimpleModal'
+	        ),
+	        _react2['default'].createElement(
 	          'button',
 	          { className: btnsClassNames[window.theme], onClick: this.handleSimple },
 	          'Simple modal'
 	        ),
-	        _react2['default'].createElement('div', { dangerouslySetInnerHTML: { __html: _codeLoaderModalsSimpleModal2['default'] } })
+	        _react2['default'].createElement('div', { dangerouslySetInnerHTML: { __html: _codeLoaderModalsSimpleModal2['default'].replace(/{{\s*theme\s*}}/mg, window.theme) } }),
+	        _react2['default'].createElement(_api2['default'], { docgen: _docgenLoaderSrcThemesBootstrapSimpleModal2['default'] })
 	      );
 	    }
 	  }]);
@@ -21541,6 +21569,8 @@
 
 	var _classCallCheck = __webpack_require__(188)['default'];
 
+	var _Object$keys = __webpack_require__(240)['default'];
+
 	var _interopRequireDefault = __webpack_require__(1)['default'];
 
 	Object.defineProperty(exports, '__esModule', {
@@ -21551,13 +21581,121 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	/* example
-	import SimpleModal from 'react-mf-modal/themes/{{theme}}/simple-modal';
-	*/
-	/* real
-	import All from '../all-themes';
-	const { SimpleModal } = All[window.theme];
-	*/
+	var APIComponent = (function (_React$Component) {
+	  _inherits(APIComponent, _React$Component);
+
+	  function APIComponent() {
+	    _classCallCheck(this, APIComponent);
+
+	    _get(Object.getPrototypeOf(APIComponent.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(APIComponent, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this = this;
+
+	      console.log(this.props);
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          this.props.docgen.description
+	        ),
+	        _react2['default'].createElement(
+	          'h4',
+	          null,
+	          'API'
+	        ),
+	        _Object$keys(this.props.docgen.props).map(function (key) {
+	          var elt = _this.props.docgen.props[key];
+	          return _react2['default'].createElement(
+	            'div',
+	            { key: key },
+	            _react2['default'].createElement(
+	              'b',
+	              null,
+	              key
+	            ),
+	            ' : ',
+	            elt.description
+	          );
+	        })
+	      );
+	    }
+	  }], [{
+	    key: 'propTypes',
+	    value: {
+	      docgen: _react2['default'].PropTypes.object.isRequired
+	    },
+	    enumerable: true
+	  }]);
+
+	  return APIComponent;
+	})(_react2['default'].Component);
+
+	exports['default'] = APIComponent;
+	module.exports = exports['default'];
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(241), __esModule: true };
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(242);
+	module.exports = __webpack_require__(172).Object.keys;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 19.1.2.14 Object.keys(O)
+	var toObject = __webpack_require__(197);
+
+	__webpack_require__(169)('keys', function($keys){
+	  return function keys(it){
+	    return $keys(toObject(it));
+	  };
+	});
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(160)['default'];
+
+	var _inherits = __webpack_require__(174)['default'];
+
+	var _createClass = __webpack_require__(185)['default'];
+
+	var _classCallCheck = __webpack_require__(188)['default'];
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _allThemes = __webpack_require__(244);
+
+	var _allThemes2 = _interopRequireDefault(_allThemes);
+
+	var _ref = _allThemes2['default'][window.theme] || {};
+
+	var SimpleModal = _ref.SimpleModal;
 
 	var SimpleModalExample = (function (_React$Component) {
 	  _inherits(SimpleModalExample, _React$Component);
@@ -21596,19 +21734,456 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 240 */
-/***/ function(module, exports) {
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<pre><code class=\"hljs\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n<span class=\"hljs-comment\">/* example\nimport SimpleModal from 'react-mf-modal/themes/{{theme}}/simple-modal';\n*/</span>\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">SimpleModalExample</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  handleSuccess = () =&gt; {\n    <span class=\"hljs-keyword\">this</span>.props.resolve(<span class=\"hljs-string\">'OK !'</span>);\n  }\n  \n  render() {\n    <span class=\"hljs-keyword\">return</span> <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">SimpleModal</span>\n      <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Modal title\"</span>\n      <span class=\"hljs-attribute\">onSubmitClick</span>=<span class=\"hljs-value\">{this.handleSuccess}</span>\n      <span class=\"hljs-attribute\">resolve</span>=<span class=\"hljs-value\">{this.props.resolve}</span>\n      <span class=\"hljs-attribute\">dismiss</span>=<span class=\"hljs-value\">{this.props.dismiss}</span>&gt;</span>\n        Hello World\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">SimpleModal</span>&gt;</span>;</span>\n  }\n}</code></pre>"
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _srcThemesBootstrap = __webpack_require__(245);
+
+	var _srcThemesBootstrap2 = _interopRequireDefault(_srcThemesBootstrap);
+
+	var _srcThemesMaterialize = __webpack_require__(248);
+
+	var _srcThemesMaterialize2 = _interopRequireDefault(_srcThemesMaterialize);
+
+	exports['default'] = { bootstrap: _srcThemesBootstrap2['default'], materialize: _srcThemesMaterialize2['default'] };
+	module.exports = exports['default'];
 
 /***/ },
-/* 241 */
-/***/ function(module, exports) {
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<h1 id=\"examples\">Examples</h1>\n<p>Here is how you can use themed modals to quickly mock your apps.\nAll example pages contains the exact same code, the only change is the required theme, and the css file.</p>\n<p>You can check your console to view the promise result.</p>\n<p>Theme corresponding backdrop is declared from the App component to the container :</p>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n<span class=\"hljs-keyword\">import</span> ModalContainer <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal/container'</span>;\n<span class=\"hljs-keyword\">import</span> BackdropComponent <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal/themes/&lt;CHOSEN THEME&gt;/backdrop'</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">YourAppComponent</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  render() {\n    <span class=\"hljs-keyword\">return</span> (\n      <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ModalContainer</span> <span class=\"hljs-attribute\">backdropComponent</span>=<span class=\"hljs-value\">{BackdropComponent}</span>&gt;</span>\n        // ... Your app :)\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ModalContainer</span>&gt;</span>\n    )</span>;\n  }\n}\n</code></pre>\n<p>So here is all suported themed modal components</p>\n<h3 id=\"modals\">Modals</h3>\n";
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _backdrop = __webpack_require__(246);
+
+	var _backdrop2 = _interopRequireDefault(_backdrop);
+
+	var _simpleModal = __webpack_require__(247);
+
+	var _simpleModal2 = _interopRequireDefault(_simpleModal);
+
+	exports['default'] = {
+	  Backdrop: _backdrop2['default'],
+	  SimpleModal: _simpleModal2['default']
+	};
+	module.exports = exports['default'];
 
 /***/ },
-/* 242 */
+/* 246 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _get = __webpack_require__(160)["default"];
+
+	var _inherits = __webpack_require__(174)["default"];
+
+	var _createClass = __webpack_require__(185)["default"];
+
+	var _classCallCheck = __webpack_require__(188)["default"];
+
+	var _extends = __webpack_require__(192)["default"];
+
+	var _interopRequireDefault = __webpack_require__(1)["default"];
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var BootstrapBackdrop = (function (_React$Component) {
+	  _inherits(BootstrapBackdrop, _React$Component);
+
+	  function BootstrapBackdrop() {
+	    _classCallCheck(this, BootstrapBackdrop);
+
+	    _get(Object.getPrototypeOf(BootstrapBackdrop.prototype), "constructor", this).apply(this, arguments);
+	  }
+
+	  _createClass(BootstrapBackdrop, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2["default"].createElement("div", _extends({ className: "modal-backdrop fade in" }, this.props));
+	    }
+	  }]);
+
+	  return BootstrapBackdrop;
+	})(_react2["default"].Component);
+
+	exports["default"] = BootstrapBackdrop;
+	module.exports = exports["default"];
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(160)['default'];
+
+	var _inherits = __webpack_require__(174)['default'];
+
+	var _createClass = __webpack_require__(185)['default'];
+
+	var _classCallCheck = __webpack_require__(188)['default'];
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	/**
+	 * SimpleModal is the basic dialog window with a primary and a cancel button.
+	 */
+
+	var SimpleBootstrapModal = (function (_React$Component) {
+	  _inherits(SimpleBootstrapModal, _React$Component);
+
+	  function SimpleBootstrapModal() {
+	    var _this = this;
+
+	    _classCallCheck(this, SimpleBootstrapModal);
+
+	    _get(Object.getPrototypeOf(SimpleBootstrapModal.prototype), 'constructor', this).apply(this, arguments);
+
+	    this.bubblePrevent = function (evt) {
+	      evt.stopPropagation();
+	    };
+
+	    this.handleClose = function () {
+	      _this.props.dismiss('closed');
+	    };
+	  }
+
+	  _createClass(SimpleBootstrapModal, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'modal fade in', style: { display: 'block', overflow: 'auto' }, onClick: this.handleClose },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'modal-dialog', role: 'document', onClick: this.bubblePrevent },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'modal-content' },
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'modal-header' },
+	              _react2['default'].createElement(
+	                'button',
+	                { type: 'button', className: 'close', 'aria-label': 'Close', onClick: this.props.dismiss.bind(this, 'closed') },
+	                _react2['default'].createElement(
+	                  'span',
+	                  { 'aria-hidden': 'true' },
+	                  '×'
+	                ),
+	                _react2['default'].createElement(
+	                  'span',
+	                  { className: 'sr-only' },
+	                  'Close'
+	                )
+	              ),
+	              _react2['default'].createElement(
+	                'h3',
+	                { className: 'modal-title' },
+	                this.props.title
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'modal-body' },
+	              this.props.children
+	            ),
+	            _react2['default'].createElement(
+	              'div',
+	              { className: 'modal-footer' },
+	              _react2['default'].createElement(
+	                'button',
+	                { type: 'button', className: 'btn btn-default', onClick: this.handleClose },
+	                'Close'
+	              ),
+	              _react2['default'].createElement(
+	                'button',
+	                { type: 'button', className: 'btn btn-primary', onClick: this.props.onSubmitClick },
+	                this.props.submitLabel
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'propTypes',
+	    value: {
+	      /**
+	       * Title of the modal dialog
+	       */
+	      title: _react2['default'].PropTypes.string.isRequired,
+	      /**
+	       * Label for the submit button
+	       */
+	      submitLabel: _react2['default'].PropTypes.string.isRequired,
+	      /**
+	       * Submit button handler function
+	       */
+	      onSubmitClick: _react2['default'].PropTypes.func.isRequired,
+	      /**
+	       * You HAVE TO pass dismiss function injected by the service
+	       */
+	      dismiss: _react2['default'].PropTypes.func.isRequired,
+	      /**
+	       * You HAVE TO pass resolve function injected by the service
+	       */
+	      resolve: _react2['default'].PropTypes.func.isRequired
+	    },
+	    enumerable: true
+	  }, {
+	    key: 'defaultProps',
+	    value: {
+	      submitLabel: 'OK'
+	    },
+	    enumerable: true
+	  }]);
+
+	  return SimpleBootstrapModal;
+	})(_react2['default'].Component);
+
+	exports['default'] = SimpleBootstrapModal;
+	module.exports = exports['default'];
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _backdrop = __webpack_require__(249);
+
+	var _backdrop2 = _interopRequireDefault(_backdrop);
+
+	var _simpleModal = __webpack_require__(250);
+
+	var _simpleModal2 = _interopRequireDefault(_simpleModal);
+
+	exports['default'] = {
+	  Backdrop: _backdrop2['default'],
+	  SimpleModal: _simpleModal2['default']
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 249 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(160)['default'];
+
+	var _inherits = __webpack_require__(174)['default'];
+
+	var _createClass = __webpack_require__(185)['default'];
+
+	var _classCallCheck = __webpack_require__(188)['default'];
+
+	var _extends = __webpack_require__(192)['default'];
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var BootstrapBackdrop = (function (_React$Component) {
+	  _inherits(BootstrapBackdrop, _React$Component);
+
+	  function BootstrapBackdrop() {
+	    _classCallCheck(this, BootstrapBackdrop);
+
+	    _get(Object.getPrototypeOf(BootstrapBackdrop.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(BootstrapBackdrop, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement('div', _extends({ className: 'lean-overlay' }, this.props));
+	    }
+	  }], [{
+	    key: 'defaultProps',
+	    value: {
+	      style: {
+	        display: 'block',
+	        opacity: 0.5,
+	        zIndex: 1002
+	      }
+	    },
+	    enumerable: true
+	  }]);
+
+	  return BootstrapBackdrop;
+	})(_react2['default'].Component);
+
+	exports['default'] = BootstrapBackdrop;
+	module.exports = exports['default'];
+
+/***/ },
+/* 250 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _get = __webpack_require__(160)['default'];
+
+	var _inherits = __webpack_require__(174)['default'];
+
+	var _createClass = __webpack_require__(185)['default'];
+
+	var _classCallCheck = __webpack_require__(188)['default'];
+
+	var _interopRequireDefault = __webpack_require__(1)['default'];
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var SimpleMaterializeModal = (function (_React$Component) {
+	  _inherits(SimpleMaterializeModal, _React$Component);
+
+	  function SimpleMaterializeModal() {
+	    var _this = this;
+
+	    _classCallCheck(this, SimpleMaterializeModal);
+
+	    _get(Object.getPrototypeOf(SimpleMaterializeModal.prototype), 'constructor', this).apply(this, arguments);
+
+	    this.bubblePrevent = function (evt) {
+	      evt.stopPropagation();
+	    };
+
+	    this.handleClose = function () {
+	      _this.props.dismiss('closed');
+	    };
+	  }
+
+	  _createClass(SimpleMaterializeModal, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'modal', style: modalStyle },
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'modal-content' },
+	          _react2['default'].createElement(
+	            'h4',
+	            null,
+	            this.props.title
+	          ),
+	          this.props.children
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'modal-footer' },
+	          _react2['default'].createElement(
+	            'a',
+	            { className: 'modal-action modal-close waves-effect waves-green btn-flat blue-text', onClick: this.props.onSubmitClick },
+	            this.props.submitLabel
+	          ),
+	          _react2['default'].createElement(
+	            'a',
+	            { className: 'modal-action modal-close waves-effect waves-red btn-flat', onClick: this.handleClose },
+	            'Close'
+	          )
+	        )
+	      );
+	    }
+	  }], [{
+	    key: 'propTypes',
+	    value: {
+	      title: _react2['default'].PropTypes.string.isRequired,
+	      dismiss: _react2['default'].PropTypes.func.isRequired,
+	      resolve: _react2['default'].PropTypes.func.isRequired,
+	      submitLabel: _react2['default'].PropTypes.string.isRequired,
+	      onSubmitClick: _react2['default'].PropTypes.func.isRequired
+	    },
+	    enumerable: true
+	  }, {
+	    key: 'defaultProps',
+	    value: {
+	      submitLabel: 'OK'
+	    },
+	    enumerable: true
+	  }]);
+
+	  return SimpleMaterializeModal;
+	})(_react2['default'].Component);
+
+	exports['default'] = SimpleMaterializeModal;
+
+	var modalStyle = {
+	  display: 'block',
+	  opacity: 1,
+	  top: '10%',
+	  zIndex: 1003
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 251 */
+/***/ function(module, exports) {
+
+	module.exports = {"description":"SimpleModal is the basic dialog window with a primary and a cancel button.","props":{"title":{"type":{"name":"string"},"required":true,"description":"Title of the modal dialog"},"submitLabel":{"type":{"name":"string"},"required":true,"description":"Label for the submit button","defaultValue":{"value":"'OK'","computed":false}},"onSubmitClick":{"type":{"name":"func"},"required":true,"description":"Submit button handler function"},"dismiss":{"type":{"name":"func"},"required":true,"description":"You HAVE TO pass dismiss function injected by the service"},"resolve":{"type":{"name":"func"},"required":true,"description":"You HAVE TO pass resolve function injected by the service"}}}
+
+/***/ },
+/* 252 */
+/***/ function(module, exports) {
+
+	module.exports = "<pre><code class=\"hljs\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n<span class=\"hljs-keyword\">import</span> SimpleModal <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal/themes/{{theme}}/simple-modal'</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">SimpleModalExample</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  handleSuccess = () =&gt; {\n    <span class=\"hljs-keyword\">this</span>.props.resolve(<span class=\"hljs-string\">'OK !'</span>);\n  }\n  \n  render() {\n    <span class=\"hljs-keyword\">return</span> <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">SimpleModal</span>\n      <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Modal title\"</span>\n      <span class=\"hljs-attribute\">onSubmitClick</span>=<span class=\"hljs-value\">{this.handleSuccess}</span>\n      <span class=\"hljs-attribute\">resolve</span>=<span class=\"hljs-value\">{this.props.resolve}</span>\n      <span class=\"hljs-attribute\">dismiss</span>=<span class=\"hljs-value\">{this.props.dismiss}</span>&gt;</span>\n        Hello World\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">SimpleModal</span>&gt;</span>;</span>\n  }\n}</code></pre>"
+
+/***/ },
+/* 253 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1 id=\"examples\">Examples</h1>\n<p>Here is how you can use themed modals to quickly mock your apps.\nAll example pages contains the exact same code, the only change is the required theme, and the css file.</p>\n<p>You can check your console to view the promise result.</p>\n<p>Theme corresponding backdrop is declared from the App component to the container :</p>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n<span class=\"hljs-keyword\">import</span> ModalContainer <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal/container'</span>;\n<span class=\"hljs-keyword\">import</span> BackdropComponent <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal/themes/&lt;CHOSEN THEME&gt;/backdrop'</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">YourAppComponent</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  render() {\n    <span class=\"hljs-keyword\">return</span> (\n      <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ModalContainer</span> <span class=\"hljs-attribute\">backdropComponent</span>=<span class=\"hljs-value\">{BackdropComponent}</span>&gt;</span>\n        // ... Your app :)\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ModalContainer</span>&gt;</span>\n    )</span>;\n  }\n}\n</code></pre>\n<p>So here is all suported themed modal components</p>\n<h2 id=\"modals\">Modals</h2>\n";
+
+/***/ },
+/* 254 */
 /***/ function(module, exports) {
 
 	module.exports = "<h1 id=\"getting-started\">Getting started</h1>\n<h2 id=\"introduction\">Introduction</h2>\n<p>The react-mf components aims to extract the markup from the component logic.\nYou can get it via npm :</p>\n<pre><code class=\"hljs bash\"> npm install --save react-mf-modal\n</code></pre>\n<h2 id=\"architecture\">Architecture</h2>\n<p>react-mf-modal provides :</p>\n<ul>\n<li>a service,</li>\n<li>a named modal container component automaticaly registering to the service,</li>\n<li>themed set of famous CSS libraries to easily and quickly mock your ideas.</li>\n</ul>\n<h3 id=\"the-service\">The service</h3>\n<p>Usage of modal is easy : </p>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n<span class=\"hljs-keyword\">import</span> ModalService <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal'</span>;\n<span class=\"hljs-keyword\">import</span> YourModalComponent <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'...'</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">YourComponent</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  handleModalSuccess = (result) =&gt; {\n    <span class=\"hljs-comment\">// Handle modal result here</span>\n  }\n\n  handleModalDismiss = (cause) =&gt; {\n    <span class=\"hljs-comment\">// Handle dimiss here</span>\n  }\n\n  thisIsWhereItHappens() {\n    <span class=\"hljs-keyword\">var</span> modalComponentProps = {\n      prop1 : <span class=\"hljs-string\">'foo'</span>,\n      prop2 : <span class=\"hljs-string\">'bar'</span>,\n    };\n\n    ModalService.open(YourModalComponent, modalComponentProps)\n      .then(<span class=\"hljs-keyword\">this</span>.handleModalSuccess, <span class=\"hljs-keyword\">this</span>.handleModalDismiss)\n  }\n}\n</code></pre>\n<h3 id=\"the-modal-container\">The modal container</h3>\n<p>This is where modal will be rendered :</p>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>;\n<span class=\"hljs-keyword\">import</span> ModalContainer <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal/container'</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">YourAppComponent</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">React</span>.<span class=\"hljs-title\">Component</span> </span>{\n  render() {\n    <span class=\"hljs-keyword\">return</span> <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">ModalContainer</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">YourHeaderComponent</span> /&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">YourBodyComponent</span> /&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">YourFooterComponent</span> /&gt;</span>\n      /**\n      * This is where backdrop and modals will be appened :\n      * <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">Backdrop</span> /&gt;</span>\n      * <span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">Modal</span> /&gt;</span>\n      **/\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">ModalContainer</span>&gt;</span>;</span>\n  }\n}\n</code></pre>\n<h3 id=\"themed-components\">Themed Components</h3>\n<p>Every theme exposes those modal components:</p>\n<ul>\n<li>SimpleModal</li>\n</ul>\n<pre><code class=\"hljs javascript\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react'</span>\n<span class=\"hljs-keyword\">import</span> { SimpleModal } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">'react-mf-modal/themes/materialize'</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">default</span> YourThemedModal extends React.Component {\n  static propTypes = {\n    prop1: React.PropTypes.string,\n    prop2: React.PropTypes.string,\n    resolve: React.PropTypes.func.isRequired,\n    dismiss: React.PropTypes.func.isRequired,\n  }\n\n  handleSuccess = () =&gt; {\n    <span class=\"hljs-keyword\">this</span>.props.resolve(<span class=\"hljs-string\">'Your result'</span>);\n  }\n\n  render() {\n    <span class=\"hljs-keyword\">return</span> <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-title\">SimpleModal</span> \n        <span class=\"hljs-attribute\">title</span>=<span class=\"hljs-value\">\"Modal title\"</span>\n        <span class=\"hljs-attribute\">onSubmitClick</span>=<span class=\"hljs-value\">{this.handleSuccess}</span>\n        <span class=\"hljs-attribute\">resolve</span>=<span class=\"hljs-value\">{this.props.resolve}</span>\n        <span class=\"hljs-attribute\">dismiss</span>=<span class=\"hljs-value\">{this.props.dismiss}</span>&gt;</span>\n      Hello World\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-title\">SimpleModal</span>&gt;</span>;</span>\n  }\n}\n</code></pre>\n<h2 id=\"themes\">Themes</h2>\n<p>Themes are not meant to be able to handle every corner options of parent libraries.\nThey&#39;re built to handle common use cases, and to be easily switched from one to another.\nThey&#39;re built to allow you to mock your app easily without taking care about common cases.\nBuild your own markup, it can be easily added once all your business code is running, without changing your codebase.</p>\n";

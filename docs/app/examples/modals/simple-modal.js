@@ -4,7 +4,7 @@ import SimpleModal from 'react-mf-modal/themes/{{theme}}/simple-modal';
 */
 /* real
 import All from '../all-themes';
-const { SimpleModal } = All[window.theme];
+const { SimpleModal } = All[window.theme] || {};
 */
 
 export default class SimpleModalExample extends React.Component {
