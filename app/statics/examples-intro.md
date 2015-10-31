@@ -14,11 +14,9 @@ import BackdropComponent from 'react-mf-modal/themes/<CHOSEN THEME>/backdrop';
 
 export default class YourAppComponent extends React.Component {
   render() {
-    return (
-      <ModalContainer backdropComponent={BackdropComponent}>
-        // ... Your app :)
-      </ModalContainer>
-    );
+    return <ModalContainer backdropComponent={BackdropComponent}>
+      // ... Your app :)
+    </ModalContainer>;
   }
 }
 ```
