@@ -12,15 +12,15 @@ export default class App extends React.Component {
     
     switch (page) {
       case 'getting-started':
-        out = <div style={styles.content}>
-          <div dangerouslySetInnerHTML={{__html:gettingStarted}} />
+        out = <div style={styles.scrollLock}>
+          <div style={styles.content}>
+            <div dangerouslySetInnerHTML={{__html:gettingStarted}} />
+          </div>
         </div>;
         break;
       case 'bootstrap':
       case 'materialize':
-        out = <div style={styles.content}>
-          <Examples theme={window.theme} />
-        </div>;
+        out = <Examples theme={window.theme} />;
         break;
       case 'animations':
         out = <div style={styles.content}>
@@ -58,7 +58,8 @@ const styles = {
   menuStyle: {
     height: 64,
     background: '#435052',
-    padding:'0 20px'
+    padding:'0 20px',
+    boxShadow: '0 0 10px 0 rgb(0,0,0)',
   },
   logo: {
     fontSize: 18,
@@ -85,8 +86,15 @@ const styles = {
   logoGH: {
     verticalAlign: 'middle',
   },
+  scrollLock : {
+    overflow:'auto',
+    position: 'absolute',
+    top:64,
+    left:0,
+    right: 0,
+    bottom: 0,
+  },
   content: {
-    padding:20,
     margin: '0 auto',
     maxWidth: 750,
   }

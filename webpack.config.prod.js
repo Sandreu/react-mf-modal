@@ -1,5 +1,6 @@
 var path = require('path');
 var highlightjs = require('highlight.js');
+var webpack = require('webpack');
 
 module.exports = [
   {
@@ -23,9 +24,17 @@ module.exports = [
     markdownLoader: {
       langPrefix: 'hljs ',
       highlight: function (code, lang) {
-        return highlightjs.highlightAuto(code, [lang]).value;
+        return highlightjs.highlightAuto(code, lang).value;
       },
     },
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin({
+        mangle: true,
+        compress: {
+          warnings: false,
+        },
+      }),
+    ],
     module: {
       loaders: [
         {

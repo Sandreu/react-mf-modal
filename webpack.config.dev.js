@@ -11,5 +11,6 @@ module.exports = [
       filename: 'app.js',
       publicPath: '/js/',
     },
+    plugins: [],
   }),
 ];

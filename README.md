@@ -2,7 +2,7 @@
 
 This React Component aims to extract the markup from the modal logic.
 
-It can be used to handle modal dialog or side-nav, or whatever modal view element. 
+It can be used to handle modal dialog or sidebar, or whatever modal view element. 
 
 [Read the docs](http://sandreu.github.io/react-mf-modal/)
 
@@ -78,4 +78,4 @@ class YourComponent extends React.Component {
 
 ## Markup
 
-You can use your own backdrops or use it to handle side navs, or use it with the popular css framework themes.
+You can use your own backdrops or use it to handle side bars, or use it with the popular css framework themes.

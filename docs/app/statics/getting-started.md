@@ -3,7 +3,7 @@
 ## Introduction
 
 The react-mf components aims to extract the markup from the component logic.
-It can handle dialog or side nav, animations, custom html markup, and already deals with some famous css frameworks.
+It can handle dialog or sidebar, animations, custom html markup, and already deals with some famous css frameworks.
 
 You can get it via npm :
 
@@ -78,12 +78,13 @@ export default class YourAppComponent extends React.Component {
 Every theme exposes those modal components:
 
 * SimpleModal
+* SidebarModal
 
 ```javascript
 import React from 'react'
 import { SimpleModal } from 'react-mf-modal/themes/materialize';
 
-export default YourThemedModal extends React.Component {
+export default class YourThemedModal extends React.Component {
   static propTypes = {
     prop1: React.PropTypes.string,
     prop2: React.PropTypes.string,
