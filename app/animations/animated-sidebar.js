@@ -21,11 +21,6 @@ const textAreaStyle = {
 */
 
 export default class SimpleMaterializeModal extends React.Component {
-  static propTypes = {
-    dismiss: React.PropTypes.func.isRequired,
-    resolve: React.PropTypes.func.isRequired,
-  }
-  
   static animate = {
     right: {
       visible: 0,

@@ -18,13 +18,13 @@ const rapidExample = {
 
 export default class Animations extends React.Component {
   handleSimple = () => {
-    ModalService.open(AnimatedDialog)
+    ModalService.open(<AnimatedDialog />)
       .then(result => console.log(result))
       .catch(cause => console.warn(cause));
   }
   
   handleSidebar = () => {
-    ModalService.open(AnimatedSidebar)
+    ModalService.open(<AnimatedSidebar />)
       .then(result => console.log(result))
       .catch(cause => console.warn(cause));
   }
