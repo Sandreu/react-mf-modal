@@ -11,6 +11,51 @@ You can get it via npm :
  npm install --save react-mf-modal
  ```
 
+## A Fast Working file Example
+
+Don't forget to include the CSS file :
+
+```html
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+```
+
+```javascript
+import React from 'react';
+import ModalContainer from 'react-mf-modal/container';
+import ModalService from 'react-mf-modal';
+import { SimpleModal, Backdrop } from 'react-mf-modal/themes/materialize';
+
+class Modal extends React.Component {
+  handleSuccess = () => {
+    this.props.resolve('Ok');
+  }
+  
+  render() {
+    return <SimpleModal 
+        title="Modal title"
+        onSubmitClick={this.handleSuccess}
+        resolve={this.props.resolve}
+        dismiss={this.props.dismiss}>
+      Hello World
+    </SimpleModal>;
+  }
+}
+
+export default class Example extends React.Component {
+  handleModal = () => {
+    ModalService.open(<Modal />)
+      .then(result => console.log(result))
+      .catch(cause => console.warn(cause));
+  }
+  
+  render () {
+    return <ModalContainer backdropComponent={ Backdrop }>
+      <button className="btn" onClick={this.handleModal}>Click ME</button>
+    </ModalContainer>;
+  }
+}
+```
+
 ## Architecture
 
 react-mf-modal provides :
@@ -20,7 +65,8 @@ react-mf-modal provides :
 
 ### The service
 
-Usage of modal is easy : 
+The modal service returns a Promise and takes the React Element as param
+
 
 ```javascript
 import React from 'react';
@@ -37,12 +83,7 @@ export default class YourComponent extends React.Component {
   }
   
   thisIsWhereItHappens() {
-    var modalComponentProps = {
-      prop1 : 'foo',
-      prop2 : 'bar',
-    };
-    
-    ModalService.open(YourModalComponent, modalComponentProps)
+    ModalService.open(<YourModalComponent foo="bar" />)
       .then(this.handleModalSuccess, this.handleModalDismiss)
   }
 }
@@ -86,10 +127,9 @@ import { SimpleModal } from 'react-mf-modal/themes/materialize';
 
 export default class YourThemedModal extends React.Component {
   static propTypes = {
-    prop1: React.PropTypes.string,
-    prop2: React.PropTypes.string,
-    resolve: React.PropTypes.func.isRequired,
-    dismiss: React.PropTypes.func.isRequired,
+    foo: React.PropTypes.string,
+    resolve: React.PropTypes.func,
+    dismiss: React.PropTypes.func,
   }
   
   handleSuccess = () => {

@@ -32,13 +32,13 @@ export default class Examples extends React.Component {
   }
   
   handleSimple = () => {
-    ModalService.open(SimpleModalExample)
+    ModalService.open(<SimpleModalExample />)
       .then(console.log.bind(console))
       .catch(console.warn.bind(console))
   }
   
   handleSidebar = () => {
-    ModalService.open(SidebarModalExample)
+    ModalService.open(<SidebarModalExample />)
       .then(console.log.bind(console))
       .catch(console.warn.bind(console))
   }

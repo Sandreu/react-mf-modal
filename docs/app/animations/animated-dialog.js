@@ -8,11 +8,6 @@ const modalStyle = {
 };
 
 export default class SimpleMaterializeModal extends React.Component {
-  static propTypes = {
-    dismiss: React.PropTypes.func.isRequired,
-    resolve: React.PropTypes.func.isRequired,
-  }
-  
   static animate = {
     top: {
       visible: 100,

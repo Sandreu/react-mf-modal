@@ -27,14 +27,17 @@ export default class ModalContainer extends React.Component {
     modalService.unregisterContainer(this.props.name)
   }
   
-  openModal = (Handler, props) => {
+  openModal = (Element) => {
     return new Promise((resolve, dismiss) => {
       try {
         if (this.state.isOpen === true) {
           this.state.stack.push(this.state.current);
         }
         
-        var modal = <Handler {...props} resolve={resolve} dismiss={dismiss} />
+        var modal = React.cloneElement(Element, {
+          resolve,
+          dismiss,
+        });
         
         this.setState({
           current: {

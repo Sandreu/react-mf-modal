@@ -18,12 +18,12 @@ class ModalService {
     delete containers[name];
   }
   
-  open (Handler, props, container = 'default') {
+  open (element, container = 'default') {
     if (typeof container === 'string') container = containers[container];
     
     if (!container) throw new Error(`Container ${containerName} not found`);
     
-    return container.openModal(Handler, props);
+    return container.openModal(element);
   }
 }
 
