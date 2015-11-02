@@ -23,8 +23,10 @@ export default class App extends React.Component {
         out = <Examples theme={window.theme} />;
         break;
       case 'animations':
-        out = <div style={styles.content}>
-          <Anim />
+        out = <div style={styles.scrollLock}>
+          <div style={styles.content}>
+            <Anim />
+          </div>
         </div>;
         break;
       default:

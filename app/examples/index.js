@@ -4,13 +4,13 @@ import ModalService from 'react-mf-modal';
 import ModalContainer from 'react-mf-modal/container';
 import APIComponent from './api';
 
-import SimpleModalExample from '!babel!./webpack/demo-loader.js!./modals/simple-modal';
-import SimpleModalAPI from '!./webpack/docgen-loader!../../../src/themes/bootstrap/simple-modal';
-import SimpleModalExampleCode from '!./webpack/code-loader!./modals/simple-modal';
+import SimpleModalExample from '!babel!../webpack/demo-loader.js!./modals/simple-modal';
+import SimpleModalAPI from '!../webpack/docgen-loader!../../../src/themes/bootstrap/simple-modal';
+import SimpleModalExampleCode from '!../webpack/code-loader!./modals/simple-modal';
 
-import SidebarModalExample from '!babel!./webpack/demo-loader.js!./modals/sidebar-modal';
-import SidebarModalAPI from '!./webpack/docgen-loader!../../../src/themes/bootstrap/sidebar-modal';
-import SidebarModalExampleCode from '!./webpack/code-loader!./modals/sidebar-modal';
+import SidebarModalExample from '!babel!../webpack/demo-loader.js!./modals/sidebar-modal';
+import SidebarModalAPI from '!../webpack/docgen-loader!../../../src/themes/bootstrap/sidebar-modal';
+import SidebarModalExampleCode from '!../webpack/code-loader!./modals/sidebar-modal';
 
 import examplesIntro from '../statics/examples-intro.md';
 
@@ -47,6 +47,11 @@ export default class Examples extends React.Component {
     return (<ModalContainer backdropComponent={this.state.theme.Backdrop}>
       <div style={styles.scrollLock}>
         <div style={styles.container}>
+          <div style={styles.rapidExample}>
+            <button className={this.state.btnClassName} onClick={this.handleSimple}>Simple modal</button>&nbsp;
+            <button className={this.state.btnClassName} onClick={this.handleSidebar}>Sidebar modal</button>&nbsp;
+          </div>
+          
           <div dangerouslySetInnerHTML={{__html:examplesIntro}} />
           
           <h3>SimpleModal</h3>
@@ -77,5 +82,9 @@ const styles = {
   container : {
     margin: '0 auto',
     maxWidth: 750,
+  },
+  rapidExample : {
+    textAlign: 'center',
+    padding:'40px 0 10px 0',
   },
 };
