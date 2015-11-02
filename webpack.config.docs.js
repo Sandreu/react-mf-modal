@@ -4,7 +4,7 @@ var webpack = require('webpack');
 
 module.exports = [
   {
-    name: "prod",
+    name: "docs",
     entry: './docs/app/index.js',
     output: {
       path: './docs/js/',

@@ -6,7 +6,7 @@ var express = require('express');
 var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
 var devConfig = require('../webpack.config.dev');
-var prodConfig = require('../webpack.config.prod');
+var prodConfig = require('../webpack.config.docs');
 
 gulp.task('docs:dev', function (cb) {
   var compiler = webpack(devConfig);

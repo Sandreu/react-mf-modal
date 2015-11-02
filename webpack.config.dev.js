@@ -1,4 +1,4 @@
-var base = require('./webpack.config.prod.js');
+var base = require('./webpack.config.docs.js');
 var extend = require('extend');
 
 module.exports = [
