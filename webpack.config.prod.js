@@ -24,7 +24,7 @@ module.exports = [
     markdownLoader: {
       langPrefix: 'hljs ',
       highlight: function (code, lang) {
-        return highlightjs.highlightAuto(code, lang).value;
+        return highlightjs.highlightAuto(code, [lang]).value;
       },
     },
     plugins: [

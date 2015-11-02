@@ -9,42 +9,42 @@ const modalStyle = {
 
 export default class SimpleMaterializeModal extends React.Component {
   static propTypes = {
-    title: React.PropTypes.string.isRequired,
     dismiss: React.PropTypes.func.isRequired,
     resolve: React.PropTypes.func.isRequired,
-    submitLabel: React.PropTypes.string.isRequired,
-    onSubmitClick: React.PropTypes.func.isRequired,
-  }
-  
-  static defaultProps = {
-    submitLabel: 'OK',
-    style: modalStyle,
   }
   
   static animate = {
     top: {
       visible: 100,
-      hidden:50,
+      enter:50,
     },
-  }
-  
-  bubblePrevent = (evt) => {
-    evt.stopPropagation();
+    left: {
+      visible: 0,
+      leave: 200
+    },
+    opacity: {
+      visible: modalStyle.opacity,
+      hidden: 0,
+    }
   }
   
   handleClose = () => {
     this.props.dismiss('closed');
   }
   
+  handleResolve = () => {
+    this.props.resolve('submit data');
+  }
+  
   render() {
     return <div className="modal" style={{...modalStyle, ...this.props.style}}>
       <div className="modal-content">
-        <h4>{this.props.title}</h4>
-        {this.props.children}
+        <h4>Animated Modal</h4>
+        Animations are easy !
       </div>
       <div className="modal-footer">
-        <a className="modal-action modal-close waves-effect waves-green btn-flat blue-text" onClick={this.props.onSubmitClick}>{this.props.submitLabel}</a>
-        <a className="modal-action modal-close waves-effect waves-red btn-flat" onClick={this.handleClose}>Close</a>
+        <a className="modal-action btn-flat blue-text" onClick={this.handleResolve}>OK</a>
+        <a className="modal-action btn-flat" onClick={this.handleClose}>Close</a>
       </div>
     </div>
   }

@@ -1,12 +1,13 @@
-import React from 'react'
+import React from 'react';
+
+const style = {
+  display: 'block',
+  opacity: 0.5,
+};
 
 export default class BootstrapBackdrop extends React.Component {
   static defaultProps = {
-    style: {
-      display: 'block',
-      opacity: 0.5,
-      zIndex: 1002,
-    }
+    style,
   }
   
   render() {
