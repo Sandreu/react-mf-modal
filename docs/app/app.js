@@ -40,7 +40,12 @@ export default class App extends React.Component {
   render() {
     return (<div>
       <div style={styles.menuStyle}>
-        <h1 style={styles.logo}><a href="./" style={styles.logoLink}>React-MF-Modal</a></h1>
+        <h1 style={styles.logo}>
+          <a href="./" style={styles.logoLink}>
+            <img src="assets/logo.png" alt="MF Logo" style={styles.mainLogo} />
+            React-MF-Modal
+          </a>
+        </h1>
         <div style={styles.links}>
           <a href="getting-started.html" style={styles.link}>Getting started</a>
           <a href="bootstrap.html" style={styles.link}>Bootstrap</a>
@@ -68,6 +73,10 @@ const styles = {
     lineHeight: '60px',
     float: 'left',
     margin:0,
+  },
+  mainLogo: {
+    verticalAlign: 'middle',
+    marginRight: 15,
   },
   logoLink: {
     color: '#fff',

@@ -15,7 +15,7 @@
   },
   "scripts": {
     "serve": "gulp docs:dev",
-    "dist": "gulp dist; npm publish ./dist; rm -rf ./dist;"
+    "dist": "gulp dist; npm publish ./dist; rm -rf ./dist; gulp docs:deploy;"
   },
   "tags": [
     "react",
