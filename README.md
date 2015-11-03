@@ -9,70 +9,54 @@ It can be used to handle modal dialog or sidebar, or whatever modal view element
 
 ## Installation
 
-Available on npm
+You can get it via npm :
 
-```
-npm install --save react-mf-modal
-```
-
+ ```bash
+ npm install --save react-mf-modal
+ ```
 
 ## Usage
 
-This component provides a service instance to get a `Promise` of the modal result.
+Don't forget to include the CSS file :
 
-You can use any component as Modal.
-
-```javascript
-import ModalService from 'react-mf-modal'
-
-class YourModal extends React.Component {
-  handleSuccess = () => {
-    this.props.resolve('Great');
-  }
-  
-  render() {
-    return (<div className="modal" onClick={this.handleSuccess}>
-      {this.props.message}
-    </div>);
-  }
-}
-
-class YourComponent extends React.Component {
-  // ...
-  handleModalSuccess = (result) => {
-    console.log(result) // Will log 'Great'
-  }
-  
-  handleModalDismiss = (dismiss) => {
-    // You can handle here dismiss cases
-  }
-  
-  handleClick() {
-    ModalService.open(YourModal, {message: 'Hello World !'})
-      .then(this.handleModalSuccess, this.handleModalDismiss)
-  }
-  // ...
-}
+```html
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
 ```
 
-You also have to declare the modal container.
-
-
 ```javascript
-import ModalContainer from 'react-mf-modal/container'
+import React from 'react';
+import ModalContainer from 'react-mf-modal/container';
+import ModalService from 'react-mf-modal';
+import { SimpleModal, Backdrop } from 'react-mf-modal/themes/materialize';
 
-class YourComponent extends React.Component {
-  // ...
-  render() {
-    return (<ModalContainer>
-      <div>
-        Your components here
-      </div>
-      // A DOM node with the Backdrop and the modal will be put here when
-      // a ModalService.open is called
-    </ModalContainer>)
+class Modal extends React.Component {
+  handleSuccess = () => {
+    this.props.resolve('Ok');
   }
-  // ...
+  
+  render() {
+    return <SimpleModal 
+        title="Modal title"
+        onSubmitClick={this.handleSuccess}
+        resolve={this.props.resolve}
+        dismiss={this.props.dismiss}>
+      Hello World
+    </SimpleModal>;
+  }
+}
+
+export default class Example extends React.Component {
+  handleModal = () => {
+    ModalService.open(<Modal />)
+      .then(result => console.log(result))
+      .catch(cause => console.warn(cause));
+  }
+  
+  render () {
+    return <ModalContainer backdropComponent={ Backdrop }>
+      <button className="btn" onClick={this.handleModal}>Click ME</button>
+    </ModalContainer>;
+  }
 }
 ```
 
