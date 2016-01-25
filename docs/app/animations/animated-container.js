@@ -7,16 +7,21 @@ export default class AnimatedContainer extends ModalContainer {
   render() {
     var modal = null;
     var backdrop = null;
+    var modalContainerStyle = {};
     if (this.state.current) {
       modal = this.state.current.Element;
       backdrop = <Backdrop onClick={this.dismissModal} />;
-    }  
+    } else {
+      modalContainerStyle.pointerEvents = 'none';
+    }
     return <div>
       {this.props.children}
-      <AnimChildren>
-        { backdrop }
-        { modal }
-      </AnimChildren>
+      <div style={modalContainerStyle}>
+        <AnimChildren>
+          { backdrop }
+          { modal }
+        </AnimChildren>
+      </div>
     </div>
   }
 }
